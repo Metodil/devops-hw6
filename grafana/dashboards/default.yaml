@@ -1,0 +1,9 @@
+apiVersion: 1
+
+providers:
+  - name: Modul-6 # A uniquely identifiable name for the provider
+    folder: DevOps-2023 # The folder where to place the dashboards
+    type: file
+    options:
+      path: /etc/grafana/provisioning/dashboards
+

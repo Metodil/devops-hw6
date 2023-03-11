@@ -1,0 +1,15 @@
+version: "3.7"
+
+volumes:
+  grafana:
+    driver: local
+services:
+    grafana:
+      image: grafana/grafana:latest
+      container_name: DevOpv_grafana
+      ports:
+        - 3000:3000
+      restart: unless-stopped
+      volumes:
+        - /vagrant/grafana/datasources:/etc/grafana/provisioning/datasources
+        - /vagrant/grafana/dashboards:/etc/grafana/provisioning/dashboards
