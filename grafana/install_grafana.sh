@@ -9,8 +9,8 @@ echo "Set Grafana vars"
 
 
 echo "Install Grafana"
-cp /vagrant/docker-compose.yml .
-docker compose up -d
+cp /vagrant/docker-compose-grafana.yml .
+docker compose -f docker-compose-grafana.yml up -d
 
 echo "* Adjust the firewall for Grafana"
 firewall-cmd --permanent --add-port=3000/tcp

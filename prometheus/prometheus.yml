@@ -6,13 +6,14 @@ global:
 alerting:
   alertmanagers:
   - static_configs:
-    - targets:
-      - 192.168.99.101:9093
+    - targets:['192.168.99.101:9093']
     scheme: http
     timeout: 10s
 
 rule_files:
-  - "rules/*.yml"
+#  - "rules/*.yml"
+  - '/alertmanager/rules'
+
 
 scrape_configs:
   - job_name: 'docker'
