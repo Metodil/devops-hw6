@@ -20,13 +20,13 @@ services:
 
     alertmanager:
         restart: always
-        rivileged: true
+        privileged: true
         depends_on:
           - prometheus
         image: prom/alertmanager
         container_name: alertmanager
         volumes:
-          - /vagrant/prometeus/alertmanager.yml:/etc/alertmanager/alertmanager.yml
+          - /vagrant/prometheus/alertmanager.yml:/etc/alertmanager/alertmanager.yml
         command:
             - '--config.file=/alertmanager.yml'
         ports:

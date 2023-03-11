@@ -17,7 +17,7 @@ Vagrant.configure(2) do |config|
     node1.vm.provision "shell", path: "./docker/add_docker_metrics.sh"
 #    node1.vm.provision "shell", path: "./prometheus/install_prometheus.sh"
     node1.vm.provision "shell", path: "./prometheus/install_prometheus_alertmanager.sh"
-    node1.vm.provision "shell", path: "./prometheus/install_grafana.sh"
+    node1.vm.provision "shell", path: "./grafana/install_grafana.sh"
     
   end
 
