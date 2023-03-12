@@ -3,16 +3,16 @@ global:
   external_labels:
     monitor: 'DevOps-lab-monitor'
 
-alerting:
-  alertmanagers:
-  - static_configs:
-    - targets:['192.168.99.101:9093']
-    scheme: http
-    timeout: 10s
+#alerting:
+#  alertmanagers:
+#  - static_configs:
+#    - targets:['192.168.99.101:9093']
+#    scheme: http
+#    timeout: 10s
 
-rule_files:
+#rule_files:
 #  - "rules/*.yml"
-  - '/alertmanager/rules'
+#  - '/alertmanager/rules'
 
 
 scrape_configs:

@@ -7,7 +7,7 @@ services:
         privileged: true
         volumes:
             - /vagrant/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
-            - /vagrant/prometheus/rules:/alertmanager/rules
+#            - /vagrant/prometheus/rules:/alertmanager/rules
         command:
             - '--config.file=/etc/prometheus/prometheus.yml'
         ports:
@@ -28,6 +28,6 @@ services:
         volumes:
           - /vagrant/prometheus/alertmanager.yml:/etc/alertmanager/alertmanager.yml
         command:
-            - '--config.file=/alertmanager.yml'
+            - '--config.file=/etc/alertmanager/alertmanager.yml'
         ports:
             - '9093:9093'
