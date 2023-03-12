@@ -1,0 +1,43 @@
+version: '2'
+
+services:
+
+    prometheus:
+        image: prom/prometheus
+        privileged: true
+        volumes:
+            - /vagrant/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+            - /vagrant/prometheus/rules/multi_alerts.yml:/etc/prometheus/rules/multi_alerts.yml
+        command:
+            - '--config.file=/etc/prometheus/prometheus.yml'
+        ports:
+            - '9090:9090'
+
+    node-exporter:
+        image: prom/node-exporter
+        ports:
+            - '9100:9100'
+
+    alertmanager:
+        restart: always
+        privileged: true
+        depends_on:
+          - prometheus
+        image: prom/alertmanager
+        container_name: alertmanager
+        volumes:
+          - /vagrant/prometheus/alertmanager.yml:/etc/alertmanager/alertmanager.yml
+        command:
+            - '--config.file=/etc/alertmanager/alertmanager.yml'
+        ports:
+            - '9093:9093'
+            
+    grafana:
+        image: grafana/grafana:latest
+        container_name: DevOpv_grafana
+        ports:
+          - 3000:3000
+        restart: unless-stopped
+        volumes:
+          - /vagrant/grafana/datasources:/etc/grafana/provisioning/datasources
+          - /vagrant/grafana/dashboards:/etc/grafana/provisioning/dashboards            

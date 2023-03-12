@@ -1,11 +1,25 @@
+global:
+  resolve_timeout: 1m
+  slack_api_url: 'https://hooks.slack.com/services/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'
+
 route:
-  group_by: ['alertname']
-  receiver: smtp-local
+  receiver: 'slack-notifications'
+
 receivers:
-  - name: 'smtp-local'
-    email_configs:
-    - to: 'metodil@hotmail.com'
-      from: 'devopv@lab.com'
-      require_tls: false
-      smarthost: localhost:25
-      send_resolved: true
+- name: 'slack-notifications'
+  slack_configs:
+  - channel: '#prometheus-hw6'
+    send_resolved: true
+
+
+#route:
+#  group_by: ['alertname']
+#  receiver: smtp-local
+#receivers:
+#  - name: 'smtp-local'
+#    email_configs:
+#    - to: 'metodil@hotmail.com'
+#      from: 'devopv@lab.com'
+#      require_tls: false
+#      smarthost: localhost:25
+#      send_resolved: true
